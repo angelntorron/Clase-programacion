@@ -41,8 +41,8 @@ public class PilaAcotada {
     public int ObtenerTamaño(){
         return tam;
     }
-    public Object cima(){
-       
+    public Object cima() throws ExcepcionDePilaVacia{
+       if(tam==0)throw new ExcepcionDePilaVacia("Intenta obtener la cima de una pila vacia");
         return array[tam-1];
     }
 }

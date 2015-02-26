@@ -82,14 +82,14 @@ public class PilaAcotadaTest {
         assertEquals(2, pila.ObtenerTamaño());
     }
     @Test
-    public void testObtenerCimaPilaConElementos(){
+    public void testObtenerCimaPilaConElementos() throws ExcepcionDePilaVacia{
         PilaAcotada pila=new PilaAcotada();
         pila.apilar(1);
         pila.apilar(2);
         assertEquals(2, pila.cima());
     }
      @Test
-    public void testObtenerCimaPilaConUnElementos(){
+    public void testObtenerCimaPilaConUnElementos() throws ExcepcionDePilaVacia{
         PilaAcotada pila=new PilaAcotada();
         pila.apilar(1);
         assertEquals(1, pila.cima());
@@ -98,6 +98,11 @@ public class PilaAcotadaTest {
     public void testDesapilarDeUnaPilaVacia() throws ExcepcionDePilaVacia{
         PilaAcotada pila=new PilaAcotada();
         pila.desapilar();
+    }
+    @Test(expected=ExcepcionDePilaVacia.class)
+    public void testObtenerCimaDeUnaPilaVacia() throws ExcepcionDePilaVacia{
+        PilaAcotada pila=new PilaAcotada();
+        pila.cima();
     }
     
 }
