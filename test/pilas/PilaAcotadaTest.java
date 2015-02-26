@@ -54,7 +54,7 @@ public class PilaAcotadaTest {
        assertEquals(false, pila.estaVacia());
     }
     @Test
-    public void testEstaVacioDespuesDeApilarYDesapilar(){
+    public void testEstaVacioDespuesDeApilarYDesapilar() throws ExcepcionDePilaVacia{
         PilaAcotada pila=new PilaAcotada();
         pila.apilar(1);
         pila.desapilar();
@@ -95,7 +95,7 @@ public class PilaAcotadaTest {
         assertEquals(1, pila.cima());
     }
     @Test(expected=ExcepcionDePilaVacia.class)
-    public void testDesapilarDeUnaPilaVacia(){
+    public void testDesapilarDeUnaPilaVacia() throws ExcepcionDePilaVacia{
         PilaAcotada pila=new PilaAcotada();
         pila.desapilar();
     }
