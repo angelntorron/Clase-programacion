@@ -1,6 +1,7 @@
 
 package pilas;
 
+import excepcionDePilaVacia.ExcepcionDePilaLlena;
 import excepcionDePilaVacia.ExcepcionDePilaVacia;
 /**
  *
@@ -24,7 +25,10 @@ public class PilaAcotada {
     public boolean estaVacia(){
         return tam==0;
     }
-    public void apilar(Object objeto){
+    public void apilar(Object objeto) throws ExcepcionDePilaLlena{
+        if(tam==tamMax){
+            throw new ExcepcionDePilaLlena("Esta intentando apilar en una pila llena");
+        }
         array[tam]=objeto;
         tam++;
         

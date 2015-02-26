@@ -5,6 +5,7 @@
  */
 package pilas;
 
+import excepcionDePilaVacia.ExcepcionDePilaLlena;
 import excepcionDePilaVacia.ExcepcionDePilaVacia;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -48,13 +49,13 @@ public class PilaAcotadaTest {
     }
     
     @Test
-    public void testEstaVaciaDespuesApilar(){
+    public void testEstaVaciaDespuesApilar() throws ExcepcionDePilaLlena{
         PilaAcotada pila=new PilaAcotada();
         pila.apilar(1);
        assertEquals(false, pila.estaVacia());
     }
     @Test
-    public void testEstaVacioDespuesDeApilarYDesapilar() throws ExcepcionDePilaVacia{
+    public void testEstaVacioDespuesDeApilarYDesapilar() throws ExcepcionDePilaVacia, ExcepcionDePilaLlena{
         PilaAcotada pila=new PilaAcotada();
         pila.apilar(1);
         pila.desapilar();
@@ -75,21 +76,21 @@ public class PilaAcotadaTest {
         PilaAcotada pila=new PilaAcotada();
         assertEquals(0, pila.ObtenerTamaño());
     }
-    public void testTamañoPilaConElementos(){
+    public void testTamañoPilaConElementos() throws ExcepcionDePilaLlena{
         PilaAcotada pila=new PilaAcotada();
         pila.apilar(1);
         pila.apilar(2);
         assertEquals(2, pila.ObtenerTamaño());
     }
     @Test
-    public void testObtenerCimaPilaConElementos() throws ExcepcionDePilaVacia{
+    public void testObtenerCimaPilaConElementos() throws ExcepcionDePilaVacia, ExcepcionDePilaLlena{
         PilaAcotada pila=new PilaAcotada();
         pila.apilar(1);
         pila.apilar(2);
         assertEquals(2, pila.cima());
     }
      @Test
-    public void testObtenerCimaPilaConUnElementos() throws ExcepcionDePilaVacia{
+    public void testObtenerCimaPilaConUnElementos() throws ExcepcionDePilaVacia, ExcepcionDePilaLlena{
         PilaAcotada pila=new PilaAcotada();
         pila.apilar(1);
         assertEquals(1, pila.cima());
@@ -103,6 +104,13 @@ public class PilaAcotadaTest {
     public void testObtenerCimaDeUnaPilaVacia() throws ExcepcionDePilaVacia{
         PilaAcotada pila=new PilaAcotada();
         pila.cima();
+    }
+    @Test(expected=ExcepcionDePilaLlena.class)
+    public void testApilarEnUnaPilaLlena() throws ExcepcionDePilaLlena{
+        PilaAcotada pila=new PilaAcotada();
+        for(int i=1;i<=101;i++){
+            pila.apilar(i);
+        }
     }
     
 }

@@ -9,11 +9,9 @@ package excepcionDePilaVacia;
  *
  * @author Caco
  */
-public class ExcepcionDePilaVacia extends Exception{ //Exception es una clase de Java
+public class ExcepcionDePilaLlena extends Exception {
     
-    public ExcepcionDePilaVacia(String descripcion){
+    public ExcepcionDePilaLlena(String descripcion){
         super(descripcion);
     }
-    
- 
 }
