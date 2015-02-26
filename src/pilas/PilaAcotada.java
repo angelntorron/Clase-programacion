@@ -37,4 +37,7 @@ public class PilaAcotada {
     public int ObtenerTamaño(){
         return tam;
     }
+    public Object cima(){
+        return array[tam-1];
+    }
 }

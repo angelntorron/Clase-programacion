@@ -80,4 +80,17 @@ public class PilaAcotadaTest {
         pila.apilar(2);
         assertEquals(2, pila.ObtenerTamaño());
     }
+    @Test
+    public void testObtenerCimaPilaConElementos(){
+        PilaAcotada pila=new PilaAcotada();
+        pila.apilar(1);
+        pila.apilar(2);
+        assertEquals(2, pila.cima());
+    }
+     @Test
+    public void testObtenerCimaPilaConUnElementos(){
+        PilaAcotada pila=new PilaAcotada();
+        pila.apilar(1);
+        assertEquals(1, pila.cima());
+    }
 }
