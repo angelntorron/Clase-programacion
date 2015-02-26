@@ -5,6 +5,7 @@
  */
 package pilas;
 
+import excepcionDePilaVacia.ExcepcionDePilaVacia;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -93,4 +94,10 @@ public class PilaAcotadaTest {
         pila.apilar(1);
         assertEquals(1, pila.cima());
     }
+    @Test(expected=ExcepcionDePilaVacia.class)
+    public void testDesapilarDeUnaPilaVacia(){
+        PilaAcotada pila=new PilaAcotada();
+        pila.desapilar();
+    }
+    
 }

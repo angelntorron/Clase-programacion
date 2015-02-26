@@ -1,6 +1,7 @@
 
 package pilas;
 
+import excepcionDePilaVacia.ExcepcionDePilaVacia;
 /**
  *
  * @author Caco
@@ -28,7 +29,10 @@ public class PilaAcotada {
         tam++;
         
     }
-    public void desapilar(){
+    public void desapilar() throws ExcepcionDePilaVacia{
+        if(tam==0){
+            throw new ExcepcionDePilaVacia("Esta intentando desapilar una pila vacia");
+        }
         tam--;
     }
     public boolean estaLlena(){
@@ -38,6 +42,7 @@ public class PilaAcotada {
         return tam;
     }
     public Object cima(){
+       
         return array[tam-1];
     }
 }
