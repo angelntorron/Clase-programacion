@@ -64,5 +64,20 @@ public class PilaAcotadaTest {
        PilaAcotada pila=new PilaAcotada();
        assertEquals(false, pila.estaLlena());
    }
-    
+    @Test
+    public void testTamañoPila(){
+        PilaAcotada pila=new PilaAcotada();
+        assertEquals(0, pila.ObtenerTamaño());
+    }
+    @Test
+    public void testTamañoPilaVacia(){
+        PilaAcotada pila=new PilaAcotada();
+        assertEquals(0, pila.ObtenerTamaño());
+    }
+    public void testTamañoPilaConElementos(){
+        PilaAcotada pila=new PilaAcotada();
+        pila.apilar(1);
+        pila.apilar(2);
+        assertEquals(2, pila.ObtenerTamaño());
+    }
 }
