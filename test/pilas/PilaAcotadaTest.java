@@ -127,6 +127,39 @@ public class PilaAcotadaTest {
        assertEquals(false, pila.estaVacia());
    }
    
+   @Test
+   public void testTamañoPilaLlena(){
+       try{
+       PilaAcotada pila=new PilaAcotada();
+       for(int i=1;i<=100;i++){
+               pila.apilar(i);
+           } 
+           assertEquals(100, pila.ObtenerTamaño());
+       }
+       catch (ExcepcionDePilaLlena ex) {
+               Logger.getLogger(PilaAcotadaTest.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+       }
+       @Test
+   public void testTamañoPilaQueLlenoYLeDesapiloUno(){
+        PilaAcotada pila=new PilaAcotada();
+       try{
+        for(int i=1;i<=100;i++){
+               pila.apilar(i);
+           } 
+            try {
+                pila.desapilar();
+            } catch (ExcepcionDePilaVacia ex) {
+                Logger.getLogger(PilaAcotadaTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
+          }
+        catch (ExcepcionDePilaLlena ex) {
+               Logger.getLogger(PilaAcotadaTest.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           assertEquals(99, pila.ObtenerTamaño());
+       }
+       
     @Test
     public void testTamañoPila(){
         PilaAcotada pila=new PilaAcotada();
