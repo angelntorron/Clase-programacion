@@ -7,6 +7,8 @@ package pilas;
 
 import excepcionDePilaVacia.ExcepcionDePilaLlena;
 import excepcionDePilaVacia.ExcepcionDePilaVacia;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -111,6 +113,24 @@ public class PilaAcotadaTest {
         for(int i=1;i<=101;i++){
             pila.apilar(i);
         }
+    }
+    
+    @Test
+    public void testApilarDesapilarDejaLaPilaIgual(){
+        try {
+            PilaAcotada pila=new PilaAcotada();
+            pila.apilar(1);
+            int cimaA=(Integer) pila.cima();
+            pila.apilar(2);
+            pila.desapilar();
+            boolean iguales=cimaA== (Integer) pila.cima();
+            assertEquals(true,iguales);
+        } catch (ExcepcionDePilaLlena ex) {
+            Logger.getLogger(PilaAcotadaTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ExcepcionDePilaVacia ex) {
+            Logger.getLogger(PilaAcotadaTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     
 }
