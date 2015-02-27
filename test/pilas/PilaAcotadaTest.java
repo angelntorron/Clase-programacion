@@ -68,6 +68,19 @@ public class PilaAcotadaTest {
        PilaAcotada pila=new PilaAcotada();
        assertEquals(false, pila.estaLlena());
    }
+   @Test
+   public void testEstaLlenaPilaQueHeLlenado(){
+       PilaAcotada pila=new PilaAcotada();
+       for(int i=1;i<=100;i++){
+           try {
+               pila.apilar(i);
+           } catch (ExcepcionDePilaLlena ex) {
+               Logger.getLogger(PilaAcotadaTest.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+       }
+       assertEquals(true, pila.estaLlena());
+   }
     @Test
     public void testTamañoPila(){
         PilaAcotada pila=new PilaAcotada();
