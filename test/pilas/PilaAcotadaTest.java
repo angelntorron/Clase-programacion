@@ -81,6 +81,52 @@ public class PilaAcotadaTest {
        }
        assertEquals(true, pila.estaLlena());
    }
+     @Test
+   public void testEstaLlenaPilaCasiLlena(){
+       PilaAcotada pila=new PilaAcotada();
+       for(int i=1;i<=99;i++){
+           try {
+               pila.apilar(i);
+           } catch (ExcepcionDePilaLlena ex) {
+               Logger.getLogger(PilaAcotadaTest.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+       }
+       assertEquals(false, pila.estaLlena());
+   }
+   
+   @Test
+   public void testEstaLlenaPilaQueSeHaVaciadoUnPoco(){
+        try {
+            PilaAcotada pila=new PilaAcotada();
+            for(int i=1;i<=100;i++){
+                try {
+                    pila.apilar(i);
+                } catch (ExcepcionDePilaLlena ex) {
+                    Logger.getLogger(PilaAcotadaTest.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+            pila.desapilar();
+            assertEquals(false, pila.estaLlena());
+        } catch (ExcepcionDePilaVacia ex) {
+            Logger.getLogger(PilaAcotadaTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
+   
+   @Test
+   public void testEstaVaciaPilaQueHeLlenadoUnPoco(){
+       PilaAcotada pila=new PilaAcotada();
+       for(int i=1;i<=100;i++){
+           try {
+               pila.apilar(i);
+           } catch (ExcepcionDePilaLlena ex) {
+               Logger.getLogger(PilaAcotadaTest.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       }
+       assertEquals(false, pila.estaVacia());
+   }
+   
     @Test
     public void testTamañoPila(){
         PilaAcotada pila=new PilaAcotada();
@@ -91,6 +137,7 @@ public class PilaAcotadaTest {
         PilaAcotada pila=new PilaAcotada();
         assertEquals(0, pila.ObtenerTamaño());
     }
+    
     public void testTamañoPilaConElementos() throws ExcepcionDePilaLlena{
         PilaAcotada pila=new PilaAcotada();
         pila.apilar(1);
